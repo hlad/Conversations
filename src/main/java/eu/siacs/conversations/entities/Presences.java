@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class Presences {
 	private final Hashtable<String, Presence> presences = new Hashtable<>();
@@ -45,6 +46,19 @@ public class Presences {
 			}
 		}
 		return status;
+	}
+
+	public String getMostAvailableResource(){
+	    synchronized (this.presences) {
+			if (presences.size() < 1) { return ""; }
+			Presence p=Collections.min(presences.values());
+			Iterator<Entry<String, Presence>> it = presences.entrySet().iterator();
+			while (it.hasNext()) {
+			    Entry<String, Presence> entry = it.next();
+			    if (entry.getValue().equals(p)) return entry.getKey();
+			}
+			return "";
+		}
 	}
 
 	public int size() {

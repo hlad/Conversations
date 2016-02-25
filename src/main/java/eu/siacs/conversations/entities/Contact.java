@@ -158,6 +158,9 @@ public class Contact implements ListItem, Blockable {
 		if (isBlocked()) {
 			tags.add(new Tag("blocked", 0xff2e2f3b));
 		}
+		if (!getMostAvailableResource().equals("")){
+			tags.add(new Tag(getMostAvailableResource(), 0xff37b8a9));
+		}
 		return tags;
 	}
 
@@ -238,6 +241,10 @@ public class Contact implements ListItem, Blockable {
 
 	public Presence.Status getShownStatus() {
 		return this.presences.getShownStatus();
+	}
+
+	public	String getMostAvailableResource(){
+	    return this.presences.getMostAvailableResource();
 	}
 
 	public boolean setPhotoUri(String uri) {
