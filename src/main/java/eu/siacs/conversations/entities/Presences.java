@@ -3,6 +3,8 @@ package eu.siacs.conversations.entities;
 import android.util.Pair;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
